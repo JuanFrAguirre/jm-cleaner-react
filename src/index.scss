@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$primary-color: rgb(36, 62, 112);
+$secondary-color: rgb(60, 115, 151);
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  @apply font-sans;
+}
+
+body {
+  @apply min-h-screen;
+}
+
+p {
+  text-align: justify;
+}
+
+@layer {
+  .btn {
+    @apply rounded-md px-4 py-2 text-white;
+  }
+}
+
+.scale-btn {
+  @apply transform transition active:scale-95;
+}
+
+.bg-dark {
+  // background-color: rgb(32, 29, 44);
+  background-color: $primary-color;
+  &-transparent {
+    background: linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0)
+    );
+    @apply backdrop-blur-sm transition;
+  }
+}
+
+.showingMenuItems,
+.showing {
+  display: flex;
+  animation: slideLeft 0.15s forwards;
+}
+
+.hiding {
+  animation: slideRight 0.15s forwards;
+  display: flex;
+}
+
+.link.active {
+  background: $primary-color;
+  color: white;
+}
+
+.goTop {
+  transform: translate(10% 30%);
+  opacity: 0;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translate(100%, 30%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+}
+@keyframes slideRight {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(100%, 30%);
+    opacity: 0;
+  }
+}
